@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Scrtwpns.Mixbox; 
 
 namespace Code
 {
     public class ColorMix : MonoBehaviour
     {
         private SpriteRenderer spriteRenderer;
-
-        private Color mixedColor = Color.white;
+        private Color mixedColor; 
 
         // Start is called before the first frame update
         void Start()
@@ -19,8 +19,8 @@ namespace Code
         public void MixColor(Color colorToAdd)
         {
             //calculate mixed color (right now just averaging) 
-            mixedColor = (spriteRenderer.color + colorToAdd)/2;
-            
+            mixedColor = Mixbox.Lerp(spriteRenderer.color, colorToAdd, 0.5f);
+            Debug.Log("Color that is mixed: " + mixedColor); 
             // Update the color of the sprite
             spriteRenderer.color = mixedColor;
         }
