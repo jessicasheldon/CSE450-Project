@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ColorHandling : MonoBehaviour
 {
+
+    private int clickCount = 0;
     private int[] lastColor = new int[4];
     private int lastIndex = 0; 
 
@@ -108,7 +110,7 @@ public class ColorHandling : MonoBehaviour
     }
     else
     {
-        return Resources.Load<Sprite>("DefaultSprite");
+        return Resources.Load<Sprite>("W");
     }
 }
 }
