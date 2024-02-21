@@ -9,6 +9,7 @@ public class ColorHandling : MonoBehaviour
     public SpriteRenderer resultRenderer;
 
     public GameObject congratulationsMessage; 
+    public GameObject playAgainButton;
 
     private Sprite targetColorSprite; 
     private Sprite resultSprite;
@@ -23,6 +24,7 @@ public class ColorHandling : MonoBehaviour
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
          congratulationsMessage.SetActive(false);
+         playAgainButton.SetActive(false);
     }
 
     public void IncrementRedCount()
@@ -58,13 +60,22 @@ public class ColorHandling : MonoBehaviour
         resultRenderer.sprite = resultSprite;
     }
 
-    private void CheckWinCondition()
+     private void CheckWinCondition()
     {
         if (resultSprite == targetColorSprite)
         {
-            Debug.Log("Congratulations! You've matched the target color.");
-            congratulationsMessage.SetActive(true);
+            StartCoroutine(ShowCongratulations());
         }
+    }
+
+    private IEnumerator ShowCongratulations()
+    {
+        yield return new WaitForSeconds(1f); // Delay for one second
+
+        Debug.Log("Congratulations! You've matched the target color.");
+
+        congratulationsMessage.SetActive(true);
+        playAgainButton.SetActive(true);
     }
 
 
@@ -153,4 +164,20 @@ private Sprite GetResultColor()
         int randomIndex = Random.Range(0, colorNames.Length);
         return Resources.Load<Sprite>(colorNames[randomIndex]);
     }
+
+    public void PlayAgain()
+    {
+        congratulationsMessage.SetActive(false);
+        playAgainButton.SetActive(false);
+        targetColorSprite = GetRandomTargetColorSprite();
+        targetColorRenderer.sprite = targetColorSprite;
+        resultSprite = Resources.Load<Sprite>("W");
+        resultRenderer.sprite = resultSprite;
+        lastIndex = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            lastColor[i] = 0;
+        }
+    }
+
 }
