@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 17809065}
   - component: {fileID: 17809064}
   - component: {fileID: 17809063}
+  - component: {fileID: 17809067}
   m_Layer: 0
   m_Name: Spike Ball
   m_TagString: Untagged
@@ -439,6 +440,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &17809067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17809062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00d75138248a4e289cb80e29e81abbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &270849949
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +464,7 @@ GameObject:
   - component: {fileID: 270849952}
   - component: {fileID: 270849951}
   - component: {fileID: 270849950}
+  - component: {fileID: 270849954}
   m_Layer: 0
   m_Name: Weight
   m_TagString: Untagged
@@ -593,6 +607,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &270849954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270849949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00d75138248a4e289cb80e29e81abbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &383697052
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,6 +1836,7 @@ GameObject:
   - component: {fileID: 1553409878}
   - component: {fileID: 1553409877}
   - component: {fileID: 1553409880}
+  - component: {fileID: 1553409881}
   m_Layer: 0
   m_Name: TNT
   m_TagString: Untagged
@@ -1952,6 +1979,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1553409881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553409875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00d75138248a4e289cb80e29e81abbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1673871192
 GameObject:
   m_ObjectHideFlags: 0

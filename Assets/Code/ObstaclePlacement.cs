@@ -7,28 +7,50 @@ namespace ObjectPlacement
     public class ObstaclePlacement : MonoBehaviour
     {
 
-        public GameObject obstaclePrefab;
+        public GameObject TNTPrefab;
+        public GameObject spikeBallPrefab;
+        public GameObject weightPrefab;
 
-        public void Update()
+        private void Start()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                randomPosition();
-
-            }
+            SpawnRandomObjects();
         }
 
-        public void randomPosition()
+        public void SpawnRandomObjects()
         {
 
-            int xObstaclePosition = Random.Range(-10, 10);
-            int yObstaclePosition = Random.Range(10, 20);
-            int zObstaclePosition = Random.Range(-10, 10);
+            StartCoroutine(RandomObstaclePosition());
 
-            Vector3 newObstaclePosition = new Vector3(xObstaclePosition, yObstaclePosition, zObstaclePosition);
 
-            Instantiate(obstaclePrefab, newObstaclePosition, Quaternion.identity);
+        }
 
+        IEnumerator RandomObstaclePosition()
+        {
+
+            yield return new WaitForSeconds(1.8f);
+
+            float xObstaclePosition = Random.Range(-8, 8);
+            float yObstaclePosition = Random.Range(7, 12);
+            float zObstaclePosition = 0;
+
+            Vector3 newObstaclePosition = new(xObstaclePosition, yObstaclePosition, zObstaclePosition);
+
+            int obstacle = Random.Range(1, 4);
+            Debug.Log("Obstacle" + obstacle);
+
+            if (obstacle == 1)
+            {
+                Instantiate(TNTPrefab, newObstaclePosition, Quaternion.identity);
+            }
+            if (obstacle == 2)
+            {
+                Instantiate(spikeBallPrefab, newObstaclePosition, Quaternion.identity);
+            }
+            if (obstacle == 3)
+            {
+                Instantiate(weightPrefab, newObstaclePosition, Quaternion.identity);
+            }
+            
 
         }
 

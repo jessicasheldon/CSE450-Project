@@ -6,7 +6,17 @@ public class ObstacleCollision : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
+
+        
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(collision.gameObject);
+
+            Time.timeScale = 0;
+        }
+
+        //Destroy(gameObject);
+
     }
 }
