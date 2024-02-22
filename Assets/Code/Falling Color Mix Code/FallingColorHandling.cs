@@ -48,6 +48,15 @@ public class FallingColorHandling : MonoBehaviour
 
     private void UpdateLastColor(int color)
     {
+        if (lastColor[0] == 0)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                lastColor[i] = color;
+            }
+            return;
+        }
+
         lastColor[lastIndex] = color;
         lastIndex = (lastIndex + 1) % 4;
     }
