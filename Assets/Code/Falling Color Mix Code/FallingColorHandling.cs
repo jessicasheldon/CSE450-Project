@@ -79,10 +79,6 @@ public class FallingColorHandling : MonoBehaviour
         }
     }
 
-    private void LoseCondition(){
-        playAgainButton.SetActive(true);
-    }
-
     public void PlayAgain()
     {
         targetColorSprite = GetRandomTargetColorSprite();
