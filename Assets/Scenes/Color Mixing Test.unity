@@ -927,10 +927,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422162237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ed71f44a31a4a7d983ab24ad8f1160, type: 3}
+  m_Script: {fileID: 11500000, guid: faf33502f90b347adb0d9f0274080c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorHandlingScript: {fileID: 2076537628}
+  colorHandlingScript: {fileID: 0}
 --- !u!61 &1422162241
 BoxCollider2D:
   m_ObjectHideFlags: 0
