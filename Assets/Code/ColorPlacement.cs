@@ -37,20 +37,38 @@ namespace ObjectPlacement
 
             int color = Random.Range(1, 4);
             Debug.Log("Color" + color);
-
+            GameObject newCircle = null;
             if (color == 1)
             {
-                Instantiate(redPrefab, newColorPosition, Quaternion.identity);
+                newCircle = Instantiate(redPrefab, newColorPosition, Quaternion.identity);
             }
-            if (color == 2)
+            else if (color == 2)
             {
-                Instantiate(bluePrefab, newColorPosition, Quaternion.identity);
+                newCircle = Instantiate(bluePrefab, newColorPosition, Quaternion.identity);
             }
-            if (color == 3)
+            else if (color == 3)
             {
-                Instantiate(yellowPrefab, newColorPosition, Quaternion.identity);
+                newCircle = Instantiate(yellowPrefab, newColorPosition, Quaternion.identity);
             }
 
+            if (newCircle != null)
+            {
+                FallingBlue fallingBlueScript = newCircle.GetComponent<FallingBlue>();
+                if (fallingBlueScript != null)
+                {
+                    fallingBlueScript.colorHandlingScript = FindObjectOfType<FallingColorHandling>();
+                }
+                FallingRed fallingRedScript = newCircle.GetComponent<FallingRed>();
+                if (fallingRedScript != null)
+                {
+                    fallingRedScript.colorHandlingScript = FindObjectOfType<FallingColorHandling>();
+                }
+                FallingYellow fallingYellowScript = newCircle.GetComponent<FallingYellow>();
+                if (fallingRedScript != null)
+                {
+                    fallingRedScript.colorHandlingScript = FindObjectOfType<FallingColorHandling>();
+                }
+            }
 
         }
             
