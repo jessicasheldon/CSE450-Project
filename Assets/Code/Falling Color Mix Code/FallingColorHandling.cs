@@ -9,6 +9,7 @@ public class FallingColorHandling : MonoBehaviour
     public SpriteRenderer resultRenderer;
 
     public GameObject congratulationsMessage; 
+    public GameObject playAgainButton; 
 
     private Sprite targetColorSprite;
     private Sprite resultSprite;
@@ -22,7 +23,9 @@ public class FallingColorHandling : MonoBehaviour
         targetColorRenderer.sprite = targetColorSprite;
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
-        congratulationsMessage.SetActive(false);
+
+         congratulationsMessage.SetActive(false);
+         playAgainButton.SetActive(false);
     }
 
     public void IncrementRedCount()
@@ -48,6 +51,15 @@ public class FallingColorHandling : MonoBehaviour
 
     private void UpdateLastColor(int color)
     {
+        if (lastColor[0] == 0)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                lastColor[i] = color;
+            }
+            return;
+        }
+
         lastColor[lastIndex] = color;
         lastIndex = (lastIndex + 1) % 4;
     }
@@ -64,6 +76,22 @@ public class FallingColorHandling : MonoBehaviour
         {
             Debug.Log("Congratulations! You've matched the target color.");
             congratulationsMessage.SetActive(true);
+            playAgainButton.SetActive(true);
+        }
+    }
+
+    public void PlayAgain()
+    {
+        targetColorSprite = GetRandomTargetColorSprite();
+        targetColorRenderer.sprite = targetColorSprite;
+        resultSprite = Resources.Load<Sprite>("W");
+        resultRenderer.sprite = resultSprite;
+        congratulationsMessage.SetActive(false);
+        playAgainButton.SetActive(false);
+
+        for (int i = 0; i < 4; i++)
+        {
+            lastColor[i] = 0;
         }
     }
 
