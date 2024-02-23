@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7031711714463890976}
   - component: {fileID: 8565182934895441523}
   - component: {fileID: 8228983487729957690}
-  - component: {fileID: 5785994721551435797}
   m_Layer: 6
   m_Name: Weight
   m_TagString: Untagged
@@ -168,18 +167,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00d75138248a4e289cb80e29e81abbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5785994721551435797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8293466383915537134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484967107da1546f5ba1f68227e308ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TNTPrefab: {fileID: 69748492201327819, guid: 1fbb4cffa611a4f54ba0aa7ea1a526e1, type: 3}
-  spikeBallPrefab: {fileID: 2720220348832621087, guid: d5c72693aaa2f409781f3091a557d7c0, type: 3}
-  weightPrefab: {fileID: 8293466383915537134}

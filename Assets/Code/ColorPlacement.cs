@@ -2,32 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ObjectPlacement
+namespace Code
 {
     public class ColorPlacement : MonoBehaviour
     {
 
-        public GameObject redPrefab;
-        public GameObject bluePrefab;
-        public GameObject yellowPrefab;
+        public GameObject red;
+        public GameObject blue;
+        public GameObject yellow;
 
         private void Start()
         {
-            SpawnRandomColors();
+            StartCoroutine(SpawnRandomObjects());
         }
 
-        public void SpawnRandomColors()
+        IEnumerator SpawnRandomObjects()
         {
-            
-            StartCoroutine(RandomPosition());
 
-            
+            while (true) {
+                yield return new WaitForSeconds(3f);
+                RandomColorPosition();
+            }
+
+
+
         }
 
-        public IEnumerator RandomPosition()
+        public void RandomColorPosition()
         {
+
             
-            yield return new WaitForSeconds(1.8f);
 
             float xColorPosition = Random.Range(-8, 8);
             float yColorPosition = Random.Range(7, 12);
@@ -36,44 +40,25 @@ namespace ObjectPlacement
             Vector3 newColorPosition = new(xColorPosition, yColorPosition, zColorPosition);
 
             int color = Random.Range(1, 4);
-            Debug.Log("Color" + color);
-            GameObject newCircle = null;
+            Debug.Log("Color spawned" + color);
+
             if (color == 1)
             {
-                newCircle = Instantiate(redPrefab, newColorPosition, Quaternion.identity);
+                Instantiate(red, newColorPosition, Quaternion.identity);
             }
-            else if (color == 2)
+            if (color == 2)
             {
-                newCircle = Instantiate(bluePrefab, newColorPosition, Quaternion.identity);
+                Instantiate(yellow, newColorPosition, Quaternion.identity);
             }
-            else if (color == 3)
+            if (color == 3)
             {
-                newCircle = Instantiate(yellowPrefab, newColorPosition, Quaternion.identity);
+                Instantiate(blue, newColorPosition, Quaternion.identity);
             }
-
-            if (newCircle != null)
-            {
-                FallingBlue fallingBlueScript = newCircle.GetComponent<FallingBlue>();
-                if (fallingBlueScript != null)
-                {
-                    fallingBlueScript.colorHandlingScript = FindObjectOfType<FallingColorHandling>();
-                }
-                FallingRed fallingRedScript = newCircle.GetComponent<FallingRed>();
-                if (fallingRedScript != null)
-                {
-                    fallingRedScript.colorHandlingScript = FindObjectOfType<FallingColorHandling>();
-                }
-                FallingYellow fallingYellowScript = newCircle.GetComponent<FallingYellow>();
-                if (fallingRedScript != null)
-                {
-                    fallingRedScript.colorHandlingScript = FindObjectOfType<FallingColorHandling>();
-                }
-            }
+            
 
         }
-            
-            
-        
+
+
+
     }
 }
-

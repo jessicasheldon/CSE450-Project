@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ObjectPlacement
+namespace Code
 {
     public class ObstaclePlacement : MonoBehaviour
     {
@@ -20,7 +20,7 @@ namespace ObjectPlacement
         {
 
             while (true) {
-                yield return new WaitForSeconds(1.8f);
+                yield return new WaitForSeconds(3f);
                 RandomObstaclePosition();
             }
 
