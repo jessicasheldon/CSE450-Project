@@ -11,7 +11,7 @@ public class FallingColorHandling : MonoBehaviour
     public GameObject congratulationsMessage; 
     public GameObject playAgainButton; 
 
-    private Sprite targetColorSprite; 
+    private Sprite targetColorSprite;
     private Sprite resultSprite;
 
     private int[] lastColor = new int[4];
@@ -23,6 +23,7 @@ public class FallingColorHandling : MonoBehaviour
         targetColorRenderer.sprite = targetColorSprite;
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
+
          congratulationsMessage.SetActive(false);
          playAgainButton.SetActive(false);
     }

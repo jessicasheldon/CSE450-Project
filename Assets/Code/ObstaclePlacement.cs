@@ -13,21 +13,25 @@ namespace ObjectPlacement
 
         private void Start()
         {
-            SpawnRandomObjects();
+            StartCoroutine(SpawnRandomObjects());
         }
 
-        public void SpawnRandomObjects()
+        IEnumerator SpawnRandomObjects()
         {
 
-            StartCoroutine(RandomObstaclePosition());
+            while (true) {
+                yield return new WaitForSeconds(1.8f);
+                RandomObstaclePosition();
+            }
+
 
 
         }
 
-        IEnumerator RandomObstaclePosition()
+        public void RandomObstaclePosition()
         {
 
-            yield return new WaitForSeconds(1.8f);
+            
 
             float xObstaclePosition = Random.Range(-8, 8);
             float yObstaclePosition = Random.Range(7, 12);
