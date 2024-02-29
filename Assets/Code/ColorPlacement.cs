@@ -11,28 +11,32 @@ namespace Code
         public GameObject blue;
         public GameObject yellow;
 
+        private FallingColorHandling fallingColorHandling;
+
         private void Start()
         {
+            fallingColorHandling = FindObjectOfType<FallingColorHandling>();
             StartCoroutine(SpawnRandomObjects());
         }
 
         IEnumerator SpawnRandomObjects()
         {
-
-            while (true) {
-                yield return new WaitForSeconds(3f);
-                RandomColorPosition();
+             while (true)
+            {
+                if (fallingColorHandling.shouldObjectsSpawn())
+                    {
+                        yield return new WaitForSeconds(3f);
+                        RandomColorPosition();
+                }
+                else
+                {
+                        yield return new WaitForSeconds(0.5f);
+                }
             }
-
-
-
         }
 
         public void RandomColorPosition()
         {
-
-            
-
             float xColorPosition = Random.Range(-8, 8);
             float yColorPosition = Random.Range(7, 12);
             float zColorPosition = 0;
@@ -40,7 +44,6 @@ namespace Code
             Vector3 newColorPosition = new(xColorPosition, yColorPosition, zColorPosition);
 
             int color = Random.Range(1, 4);
-            Debug.Log("Color spawned" + color);
 
             if (color == 1)
             {

@@ -4,28 +4,56 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FallingColorHandling : MonoBehaviour
-{
+{   
+    
     public SpriteRenderer targetColorRenderer; 
     public SpriteRenderer resultRenderer;
 
     public GameObject congratulationsMessage; 
-    public GameObject playAgainButton; 
+    public GameObject playAgainButton;
 
-    private Sprite targetColorSprite;
+    private Sprite targetColorSprite; 
     private Sprite resultSprite;
+
+    public GameObject tutorialScreen;
+    public GameObject xButton;
 
     private int[] lastColor = new int[4];
     private int lastIndex = 0;
 
-    private void Start()
+    private bool objectsSpawning = false;
+
+    public bool shouldObjectsSpawn()
     {
+        return objectsSpawning;
+    }
+
+       private void Start()
+    {
+        congratulationsMessage.SetActive(false);
+        playAgainButton.SetActive(false);
+        ShowTutorialScreen();
+    }
+    
+
+    private void ShowTutorialScreen()
+    {
+        objectsSpawning = false;
+        tutorialScreen.SetActive(true);
+        xButton.SetActive(true);
+    }
+
+    public void HideTutorialScreen()
+    {
+        objectsSpawning = true;
+        tutorialScreen.SetActive(false);
+        xButton.SetActive(false);
+        targetColorRenderer.gameObject.SetActive(true);
+        resultRenderer.gameObject.SetActive(true);
         targetColorSprite = GetRandomTargetColorSprite();
         targetColorRenderer.sprite = targetColorSprite;
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
-
-         congratulationsMessage.SetActive(false);
-         playAgainButton.SetActive(false);
     }
 
     public void IncrementRedCount()
@@ -77,6 +105,7 @@ public class FallingColorHandling : MonoBehaviour
             Debug.Log("Congratulations! You've matched the target color.");
             congratulationsMessage.SetActive(true);
             playAgainButton.SetActive(true);
+            objectsSpawning = false;
         }
     }
 
@@ -88,6 +117,7 @@ public class FallingColorHandling : MonoBehaviour
         resultRenderer.sprite = resultSprite;
         congratulationsMessage.SetActive(false);
         playAgainButton.SetActive(false);
+        objectsSpawning = true;
 
         for (int i = 0; i < 4; i++)
         {
