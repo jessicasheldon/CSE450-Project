@@ -185,7 +185,7 @@ public class FallingColorHandling : MonoBehaviour
     public void PlayAgain()
     {
         score = 0;
-        stage = 0;
+        stage = 1;
         ResetScore();
         ResetStage();
         Time.timeScale = 1;
