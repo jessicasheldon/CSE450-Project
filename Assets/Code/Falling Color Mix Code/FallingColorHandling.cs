@@ -22,6 +22,7 @@ public class FallingColorHandling : MonoBehaviour
     private int lastIndex = 0;
 
     private bool objectsSpawning = false;
+    private Code.ObstaclePlacement obstaclePlacement;
 
     private int score = 0;
     public Text scoreText;
@@ -33,8 +34,9 @@ public class FallingColorHandling : MonoBehaviour
         return objectsSpawning;
     }
 
-       private void Start()
+    private void Start()
     {
+        obstaclePlacement = FindObjectOfType<Code.ObstaclePlacement>();
         congratulationsMessage.SetActive(false);
         playAgainButton.SetActive(false);
         ShowTutorialScreen();
@@ -156,6 +158,7 @@ public class FallingColorHandling : MonoBehaviour
         {
             UpdateScore(100);
             UpdateStage();
+            obstaclePlacement.UpdateSpawnRate(stage);
             // Set a new target color
             targetColorSprite = GetRandomTargetColorSprite();
             targetColorRenderer.sprite = targetColorSprite;
@@ -196,6 +199,7 @@ public class FallingColorHandling : MonoBehaviour
         congratulationsMessage.SetActive(false);
         playAgainButton.SetActive(false);
         objectsSpawning = true;
+        obstaclePlacement.UpdateSpawnRate(stage);
 
         for (int i = 0; i < 4; i++)
         {
