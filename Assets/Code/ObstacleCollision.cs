@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
 {
+    public delegate void CollisionWithPlayer();
+    public static event CollisionWithPlayer OnPlayerCollision;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -11,7 +14,9 @@ public class ObstacleCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            OnPlayerCollision?.Invoke();
+
+            Destroy(gameObject);
 
             Time.timeScale = 0;
         }

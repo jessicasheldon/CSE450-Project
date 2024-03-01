@@ -23,6 +23,11 @@ public class FallingColorHandling : MonoBehaviour
 
     private bool objectsSpawning = false;
 
+    private int score = 0;
+    public Text scoreText;
+    private int stage = 1;
+    public Text stageText;
+
     public bool shouldObjectsSpawn()
     {
         return objectsSpawning;
@@ -46,6 +51,9 @@ public class FallingColorHandling : MonoBehaviour
     public void HideTutorialScreen()
     {
         objectsSpawning = true;
+        scoreText.text = "Score: 0";
+        stageText.text = "Stage 1";
+        StartCoroutine(ShowStageNumber(2.0f));
         tutorialScreen.SetActive(false);
         xButton.SetActive(false);
         targetColorRenderer.gameObject.SetActive(true);
@@ -55,9 +63,27 @@ public class FallingColorHandling : MonoBehaviour
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
     }
+    private void OnEnable()
+    {
+        ObstacleCollision.OnPlayerCollision += ShowPlayAgainMenu;
+    }
+
+    private void OnDisable()
+    {
+        ObstacleCollision.OnPlayerCollision -= ShowPlayAgainMenu;
+    }
+
+    // Method to show the Play Again menu
+    private void ShowPlayAgainMenu()
+    {
+        //congratulationsMessage.SetActive(false); 
+        playAgainButton.SetActive(true);
+        objectsSpawning = false;
+    }
 
     public void IncrementRedCount()
     {
+        UpdateScore(10);
         UpdateLastColor(1);
         UpdateResultColor();
         CheckWinCondition();
@@ -65,6 +91,7 @@ public class FallingColorHandling : MonoBehaviour
 
     public void IncrementYellowCount()
     {
+        UpdateScore(10);
         UpdateLastColor(2);
         UpdateResultColor();
         CheckWinCondition();
@@ -72,6 +99,7 @@ public class FallingColorHandling : MonoBehaviour
 
     public void IncrementBlueCount()
     {
+        UpdateScore(10);
         UpdateLastColor(3);
         UpdateResultColor();
         CheckWinCondition();
@@ -92,6 +120,30 @@ public class FallingColorHandling : MonoBehaviour
         lastIndex = (lastIndex + 1) % 4;
     }
 
+    private void UpdateScore(int points)
+    {
+        score += points;
+        scoreText.text = "Score: " + score;
+    }
+
+    private void ResetScore()
+    {
+        score = 0;
+        scoreText.text = "Score: " + score;
+    }
+
+    private void UpdateStage()
+    {
+        stage += 1;
+        stageText.text = "Stage " + stage;
+    }
+
+    private void ResetStage()
+    {
+        stage = 0;
+        stageText.text = "Stage " + stage;
+    }
+
     private void UpdateResultColor()
     {
         resultSprite = GetResultColor();
@@ -102,15 +154,41 @@ public class FallingColorHandling : MonoBehaviour
     {
         if (resultSprite == targetColorSprite)
         {
+            UpdateScore(100);
+            UpdateStage();
+            // Set a new target color
+            targetColorSprite = GetRandomTargetColorSprite();
+            targetColorRenderer.sprite = targetColorSprite;
+            // Reset the result color to white
+            resultSprite = Resources.Load<Sprite>("W");
+            resultRenderer.sprite = resultSprite;
+            // Reset the lastColor array
+            for (int i = 0; i < 4; i++)
+            {
+                lastColor[i] = 0;
+            }
+            StartCoroutine(ShowStageNumber(2.0f));
             Debug.Log("Congratulations! You've matched the target color.");
-            congratulationsMessage.SetActive(true);
-            playAgainButton.SetActive(true);
-            objectsSpawning = false;
+            //congratulationsMessage.SetActive(true);
+            //playAgainButton.SetActive(true);
+            //objectsSpawning = false;
         }
+    }
+
+    IEnumerator ShowStageNumber(float duration)
+    {
+        stageText.gameObject.SetActive(true); // Show the stage number
+        yield return new WaitForSeconds(duration); // Wait for the specified duration
+        stageText.gameObject.SetActive(false); // Hide the stage number
     }
 
     public void PlayAgain()
     {
+        score = 0;
+        stage = 0;
+        ResetScore();
+        ResetStage();
+        Time.timeScale = 1;
         targetColorSprite = GetRandomTargetColorSprite();
         targetColorRenderer.sprite = targetColorSprite;
         resultSprite = Resources.Load<Sprite>("W");
