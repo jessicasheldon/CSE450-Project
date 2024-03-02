@@ -5,8 +5,8 @@ using UnityEngine;
 public class SidewaysContinuous : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float minX = -7.0f; // Left boundary
-    public float maxX = 7.0f;  // Right boundary
+    public float minX = -9.0f; // Left boundary
+    public float maxX = 9.0f;  // Right boundary
 
     void Update()
     {
