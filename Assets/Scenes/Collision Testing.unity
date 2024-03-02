@@ -537,8 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  minX: -8
-  maxX: 8
+  minX: -9
+  maxX: 9
 --- !u!1 &737025502
 GameObject:
   m_ObjectHideFlags: 0
