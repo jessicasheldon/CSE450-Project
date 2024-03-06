@@ -10,6 +10,9 @@ namespace Code
         public GameObject red;
         public GameObject blue;
         public GameObject yellow;
+        public GameObject water;
+
+        private int delay = 5;
 
         private FallingColorHandling fallingColorHandling;
 
@@ -21,12 +24,21 @@ namespace Code
 
         IEnumerator SpawnRandomObjects()
         {
+            int loops = 0;
              while (true)
             {
                 if (fallingColorHandling.shouldObjectsSpawn())
                     {
-                        yield return new WaitForSeconds(3f);
-                        RandomColorPosition();
+                        Debug.Log(loops%delay);
+                        if(loops%delay == 4){
+                            yield return new WaitForSeconds(1f);
+                            RandomPowerUpPosition();
+                        }
+                        else{
+                            yield return new WaitForSeconds(3f);
+                            RandomColorPosition();
+                        }
+                    loops += 1;
                 }
                 else
                 {
@@ -58,6 +70,20 @@ namespace Code
                 Instantiate(blue, newColorPosition, Quaternion.identity);
             }
             
+
+        }
+
+
+
+        public void RandomPowerUpPosition()
+        {
+            float xPowerPosition = Random.Range(-8, 8);
+            float yPowerPosition = Random.Range(7, 12);
+            float zPowerPosition = 0;
+
+            Vector3 newPowerPosition = new(xPowerPosition, yPowerPosition, zPowerPosition);
+
+            Instantiate(water, newPowerPosition, Quaternion.identity);
 
         }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3260004443933074484}
   - component: {fileID: 4653877273341241407}
   m_Layer: 6
-  m_Name: 'Yellow '
+  m_Name: Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class XButton : MonoBehaviour
+public class xButton : MonoBehaviour
 {
     public FallingColorHandling FallingColorHandling;
 

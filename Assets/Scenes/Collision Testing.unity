@@ -889,7 +889,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   red: {fileID: 7130247245133201183, guid: 9d75644d9fa6842bba1d7f3c3a426262, type: 3}
   blue: {fileID: 8108364744387429076, guid: 46a12b5950b9e40848ff7d95f8025a21, type: 3}
-  yellow: {fileID: 5241741258953001498, guid: 248bb9b4ce4534f0e9ad1c791fe3d57f, type: 3}
+  yellow: {fileID: 5241741258953001498, guid: 7f2c14c78d3ab4f188b7ea0322a13323, type: 3}
+  water: {fileID: 5241741258953001498, guid: 248bb9b4ce4534f0e9ad1c791fe3d57f, type: 3}
 --- !u!61 &1120919432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1477,7 +1478,7 @@ GameObject:
   - component: {fileID: 2084161966}
   - component: {fileID: 2084161965}
   - component: {fileID: 2084161964}
-  - component: {fileID: 2084161963}
+  - component: {fileID: 2084161967}
   m_Layer: 0
   m_Name: x
   m_TagString: Untagged
@@ -1485,19 +1486,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2084161963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084161962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2672316a296f94f0facce2f4eded6c29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FallingColorHandling: {fileID: 1999911988}
 --- !u!61 &2084161964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1610,6 +1598,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084161967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084161962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2672316a296f94f0facce2f4eded6c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FallingColorHandling: {fileID: 1999911988}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

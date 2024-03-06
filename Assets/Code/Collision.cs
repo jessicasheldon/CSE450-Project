@@ -30,6 +30,12 @@ namespace Code
                 colorHandlingScript.IncrementYellowCount(); 
                 
             }
+            if (collision.gameObject.name.Contains("Water"))
+            {
+                Debug.Log("caught yellow");
+                colorHandlingScript.ResetColorMixing(); 
+                
+            }
             Destroy(collision.gameObject); 
            
         }

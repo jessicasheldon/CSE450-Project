@@ -146,6 +146,17 @@ public class FallingColorHandling : MonoBehaviour
         stageText.text = "Stage " + stage;
     }
 
+    public void ResetColorMixing()
+    {
+    resultSprite = Resources.Load<Sprite>("W");
+    resultRenderer.sprite = resultSprite;
+
+    for (int i = 0; i < 4; i++)
+    {
+        lastColor[i] = 0;
+    }
+}
+
     private void UpdateResultColor()
     {
         resultSprite = GetResultColor();
@@ -172,9 +183,6 @@ public class FallingColorHandling : MonoBehaviour
             }
             StartCoroutine(ShowStageNumber(2.0f));
             Debug.Log("Congratulations! You've matched the target color.");
-            //congratulationsMessage.SetActive(true);
-            //playAgainButton.SetActive(true);
-            //objectsSpawning = false;
         }
     }
 
