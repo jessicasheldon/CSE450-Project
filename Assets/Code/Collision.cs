@@ -36,7 +36,11 @@ namespace Code
                 colorHandlingScript.ResetColorMixing(); 
                 
             }
-            Destroy(collision.gameObject); 
+            if (!collision.gameObject.name.Contains("Force Field"))
+            {
+                Destroy(collision.gameObject); 
+            }
+           
            
         }
     }

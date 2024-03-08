@@ -11,8 +11,11 @@ namespace Code
         public GameObject blue;
         public GameObject yellow;
         public GameObject water;
+        public GameObject forceField;
 
         private int delay = 5;
+        private int count = 0;
+        private bool force = false;
 
         private FallingColorHandling fallingColorHandling;
 
@@ -20,6 +23,22 @@ namespace Code
         {
             fallingColorHandling = FindObjectOfType<FallingColorHandling>();
             StartCoroutine(SpawnRandomObjects());
+        }
+
+        private void Update()
+        {
+            if (count == 50)
+            {
+                count = 0;
+                force = false;
+            }
+
+            if (force == true)
+            {
+                forceField.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            }
+
+            
         }
 
         IEnumerator SpawnRandomObjects()
@@ -81,9 +100,20 @@ namespace Code
             float yPowerPosition = Random.Range(7, 12);
             float zPowerPosition = 0;
 
+            int powerUp = Random.Range(1, 3);
+
             Vector3 newPowerPosition = new(xPowerPosition, yPowerPosition, zPowerPosition);
 
-            Instantiate(water, newPowerPosition, Quaternion.identity);
+            if (powerUp == 1)
+            {
+                Instantiate(water, newPowerPosition, Quaternion.identity);
+            }
+            if (powerUp == 2)
+            {
+                Instantiate(forceField, newPowerPosition, Quaternion.identity);
+                force = true;
+            }
+            
 
         }
 
