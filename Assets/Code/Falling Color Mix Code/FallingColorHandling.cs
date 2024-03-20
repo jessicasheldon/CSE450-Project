@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Code;
 
 public class FallingColorHandling : MonoBehaviour
-{   
-    
+{
+    public ScoreManager scoreManager;
+    public ScoreboardUI scoreboardUI;
+
     public SpriteRenderer targetColorRenderer; 
     public SpriteRenderer resultRenderer;
 
@@ -78,6 +81,11 @@ public class FallingColorHandling : MonoBehaviour
     // Method to show the Play Again menu
     private void ShowPlayAgainMenu()
     {
+        // Update the score in ScoreManager
+        scoreManager.UpdateScores(score);
+        // Show the scoreboard
+        scoreboardUI.Show();
+
         //congratulationsMessage.SetActive(false); 
         playAgainButton.SetActive(true);
         objectsSpawning = false;
@@ -193,13 +201,24 @@ public class FallingColorHandling : MonoBehaviour
         stageText.gameObject.SetActive(false); // Hide the stage number
     }
 
+    public void ClearObstacles()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     public void PlayAgain()
     {
+        FindObjectOfType<ColorPlacement>().ClearObjects();
+        FindObjectOfType<ObstaclePlacement>().ClearObstacles();
+        scoreboardUI.Hide();
         score = 0;
         stage = 1;
         ResetScore();
         ResetStage();
-        Time.timeScale = 1;
+        Time.timeScale = 1; 
         targetColorSprite = GetRandomTargetColorSprite();
         targetColorRenderer.sprite = targetColorSprite;
         resultSprite = Resources.Load<Sprite>("W");

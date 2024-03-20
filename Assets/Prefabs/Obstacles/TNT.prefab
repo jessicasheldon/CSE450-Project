@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 755022382785901677}
   m_Layer: 6
   m_Name: TNT
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

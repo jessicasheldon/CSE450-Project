@@ -67,5 +67,14 @@ namespace Code
                 Instantiate(weightPrefab, newObstaclePosition, Quaternion.identity);
             }
         }
+
+        public void ClearObstacles()
+        {
+            GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+            foreach (GameObject obstacle in obstacles)
+            {
+                Destroy(obstacle);
+            }
+        }
     }
 }

@@ -93,6 +93,20 @@ namespace Code
         }
 
 
+        public void ClearObjects()
+        {
+            GameObject[] colorObjects = GameObject.FindGameObjectsWithTag("Color");
+            foreach (GameObject colorObject in colorObjects)
+            {
+                Destroy(colorObject);
+            }
+
+            GameObject[] powerUpObjects = GameObject.FindGameObjectsWithTag("PowerUp");
+            foreach (GameObject powerUpObject in powerUpObjects)
+            {
+                Destroy(powerUpObject);
+            }
+        }
 
         public void RandomPowerUpPosition()
         {
