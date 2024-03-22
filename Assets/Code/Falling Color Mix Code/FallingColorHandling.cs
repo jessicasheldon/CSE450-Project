@@ -79,7 +79,7 @@ public class FallingColorHandling : MonoBehaviour
     }
 
     // Method to show the Play Again menu
-    private void ShowPlayAgainMenu()
+    public void ShowPlayAgainMenu()
     {
         // Update the score in ScoreManager
         scoreManager.UpdateScores(score);
