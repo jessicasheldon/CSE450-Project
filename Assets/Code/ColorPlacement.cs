@@ -15,13 +15,14 @@ namespace Code
 
         private int delay = 5;
         private int count = 0;
-        private bool force = false;
+        Collision forceScript;
 
         private FallingColorHandling fallingColorHandling;
 
         private void Start()
         {
             fallingColorHandling = FindObjectOfType<FallingColorHandling>();
+            forceScript = FindObjectOfType<Collision>();
             StartCoroutine(SpawnRandomObjects());
         }
 
@@ -30,12 +31,15 @@ namespace Code
             if (count == 50)
             {
                 count = 0;
-                force = false;
+                forceScript.force = false;
             }
 
-            if (force == true)
+            if (forceScript.force == true)
             {
+
                 forceField.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+                forceField.transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
+                
             }
 
             
@@ -125,7 +129,6 @@ namespace Code
             if (powerUp == 2)
             {
                 Instantiate(forceField, newPowerPosition, Quaternion.identity);
-                force = true;
             }
             
 
