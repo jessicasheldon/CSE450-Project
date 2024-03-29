@@ -20,8 +20,10 @@ public class ObstacleCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             cameraShake.Shake();
-            
-            OnPlayerCollision?.Invoke();
+
+            //OnPlayerCollision?.Invoke();
+
+            FindObjectOfType<FallingColorHandling>().LoseLife();
 
             Destroy(gameObject);
     

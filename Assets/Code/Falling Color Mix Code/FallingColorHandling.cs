@@ -32,6 +32,9 @@ public class FallingColorHandling : MonoBehaviour
     private int stage = 1;
     public Text stageText;
 
+    private int lives = 3;
+    public Text livesText;
+
     public bool shouldObjectsSpawn()
     {
         return objectsSpawning;
@@ -42,6 +45,7 @@ public class FallingColorHandling : MonoBehaviour
         obstaclePlacement = FindObjectOfType<Code.ObstaclePlacement>();
         congratulationsMessage.SetActive(false);
         playAgainButton.SetActive(false);
+        UpdateLivesText();
         ShowTutorialScreen();
     }
     
@@ -89,6 +93,10 @@ public class FallingColorHandling : MonoBehaviour
         //congratulationsMessage.SetActive(false); 
         playAgainButton.SetActive(true);
         objectsSpawning = false;
+
+        lives = 3; 
+        UpdateLivesText();
+        Time.timeScale = 0;
     }
 
     public void IncrementRedCount()
@@ -232,6 +240,9 @@ public class FallingColorHandling : MonoBehaviour
         {
             lastColor[i] = 0;
         }
+
+        lives = 3; 
+        UpdateLivesText();
     }
 
 
@@ -319,5 +330,21 @@ private Sprite GetResultColor()
 
         int randomIndex = Random.Range(0, colorNames.Length);
         return Resources.Load<Sprite>(colorNames[randomIndex]);
+    }
+
+    public void LoseLife()
+    {
+        lives--; // Decrease the number of lives
+        UpdateLivesText(); // Update the lives text
+
+        if (lives <= 0)
+        {
+            ShowPlayAgainMenu(); // Show the Play Again menu if no lives left
+        }
+    }
+
+    private void UpdateLivesText()
+    {
+        livesText.text = "Lives: " + lives;
     }
 }
