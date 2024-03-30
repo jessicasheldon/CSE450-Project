@@ -28,6 +28,11 @@ namespace Code
 
         private void Update()
         {
+
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                TutorialController.instance.Show();
+            }
+
             if (count == 50)
             {
                 count = 0;
