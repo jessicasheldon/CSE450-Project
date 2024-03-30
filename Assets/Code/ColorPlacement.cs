@@ -12,37 +12,17 @@ namespace Code
         public GameObject yellow;
         public GameObject water;
         public GameObject forceField;
+        
 
         private int delay = 5;
-        private int count = 0;
-        Collision forceScript;
 
         private FallingColorHandling fallingColorHandling;
 
         private void Start()
         {
             fallingColorHandling = FindObjectOfType<FallingColorHandling>();
-            forceScript = FindObjectOfType<Collision>();
-            StartCoroutine(SpawnRandomObjects());
-        }
-
-        private void Update()
-        {
-            if (count == 50)
-            {
-                count = 0;
-                forceScript.force = false;
-            }
-
-            if (forceScript.force == true)
-            {
-
-                forceField.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-                forceField.transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
-                
-            }
-
             
+            StartCoroutine(SpawnRandomObjects());
         }
 
         IEnumerator SpawnRandomObjects()

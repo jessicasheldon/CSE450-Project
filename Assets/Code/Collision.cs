@@ -7,17 +7,27 @@ namespace Code
 {
     public class Collision : MonoBehaviour
     {
-        public GameObject forceField;
+        public Sprite forceField;
+        public Sprite circle;
         public bool force = false;
         public FallingColorHandling colorHandlingScript;
+        private int count = 0;
 
         void Update()
         {
-            if (force == true)
+            if (force)
             {
+                count += 1;
 
-                forceField.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-                forceField.transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
+
+                if (count == 10000)
+                {
+                    count = 0;
+                    force = false;
+                    SpriteRenderer playerSprite = gameObject.GetComponent<SpriteRenderer>();
+                    playerSprite.sprite = circle;
+                }
+
             }
         }
         private void OnCollisionEnter2D(Collision2D collision)
@@ -48,19 +58,14 @@ namespace Code
                 colorHandlingScript.ResetColorMixing(); 
                 
             }
-            if (!collision.gameObject.name.Contains("Force Field"))
-            {
-                Destroy(collision.gameObject); 
-            }
             if (collision.gameObject.name.Contains("Force Field"))
             {
-
-                collision.gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform);
-                collision.gameObject.transform.position = GameObject.FindGameObjectWithTag("Player").transform.TransformPoint(0, 0, 0);
+                SpriteRenderer playerSprite = gameObject.GetComponent<SpriteRenderer>();
+                playerSprite.sprite = forceField;
                 force = true;
             }
-           
-           
+            Destroy(collision.gameObject);
+
         }
     }
 

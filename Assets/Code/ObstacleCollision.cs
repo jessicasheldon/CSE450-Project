@@ -7,11 +7,12 @@ public class ObstacleCollision : MonoBehaviour
     private CameraShake cameraShake; 
     public delegate void CollisionWithPlayer();
     public static event CollisionWithPlayer OnPlayerCollision;
+    private Code.Collision forceScript;
 
     public void Start()
     {
-        cameraShake = Camera.main.GetComponent<CameraShake>(); 
-        
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        forceScript = FindObjectOfType<Code.Collision>();
     }
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,15 +23,20 @@ public class ObstacleCollision : MonoBehaviour
             cameraShake.Shake();
 
             //OnPlayerCollision?.Invoke();
-
-            FindObjectOfType<FallingColorHandling>().LoseLife();
+            if (forceScript.force)
+            {
+                print("Force Field active");
+            }
+            else
+            {
+                FindObjectOfType<FallingColorHandling>().LoseLife();
+            }
 
             Destroy(gameObject);
-    
+
             //Time.timeScale = 0;
         }
-
-       
+        
 
     }
 }
