@@ -12,6 +12,10 @@ public class FallingColorHandling : MonoBehaviour
     public SpriteRenderer targetColorRenderer; 
     public SpriteRenderer resultRenderer;
 
+    public SpriteRenderer mix1;
+    public SpriteRenderer mix2;
+    public SpriteRenderer mix3; 
+
     public GameObject congratulationsMessage; 
     public GameObject playAgainButton;
 
@@ -69,6 +73,7 @@ public class FallingColorHandling : MonoBehaviour
         resultRenderer.gameObject.SetActive(true);
         targetColorSprite = GetRandomTargetColorSprite();
         targetColorRenderer.sprite = targetColorSprite;
+        loadMixSprite(targetColorSprite); 
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
     }
@@ -189,6 +194,7 @@ public class FallingColorHandling : MonoBehaviour
             // Set a new target color
             targetColorSprite = GetRandomTargetColorSprite();
             targetColorRenderer.sprite = targetColorSprite;
+            loadMixSprite(targetColorSprite); 
             // Reset the result color to white
             resultSprite = Resources.Load<Sprite>("W");
             resultRenderer.sprite = resultSprite;
@@ -229,6 +235,7 @@ public class FallingColorHandling : MonoBehaviour
         Time.timeScale = 1; 
         targetColorSprite = GetRandomTargetColorSprite();
         targetColorRenderer.sprite = targetColorSprite;
+        loadMixSprite(targetColorSprite); 
         resultSprite = Resources.Load<Sprite>("W");
         resultRenderer.sprite = resultSprite;
         congratulationsMessage.SetActive(false);
@@ -330,6 +337,11 @@ private Sprite GetResultColor()
 
         int randomIndex = Random.Range(0, colorNames.Length);
         return Resources.Load<Sprite>(colorNames[randomIndex]);
+    }
+
+    private void loadMixSprite(Sprite target)
+    {
+        //working on this --Scout 
     }
 
     public void LoseLife()
