@@ -21,6 +21,31 @@ namespace Code
         private void Start()
         {
             fallingColorHandling = FindObjectOfType<FallingColorHandling>();
+            forceScript = FindObjectOfType<Collision>();
+            StartCoroutine(SpawnRandomObjects());
+        }
+
+        private void Update()
+        {
+
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                TutorialController.instance.Show();
+            }
+
+            if (count == 50)
+            {
+                count = 0;
+                forceScript.force = false;
+            }
+
+            if (forceScript.force == true)
+            {
+
+                forceField.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+                forceField.transform.rotation = GameObject.FindGameObjectWithTag("Player").transform.rotation;
+                
+            }
+
             
             StartCoroutine(SpawnRandomObjects());
         }
