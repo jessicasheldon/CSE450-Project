@@ -15,7 +15,8 @@ public class FallingColorHandling : MonoBehaviour
     public SpriteRenderer mix1;
     public SpriteRenderer mix2;
     public SpriteRenderer mix3; 
-
+    public SpriteRenderer mix4;
+    
     public GameObject congratulationsMessage; 
     public GameObject playAgainButton;
 
@@ -515,7 +516,108 @@ private Sprite GetResultColor()
 
     private void loadMixSprite(Sprite target)
     {
-        //working on this --Scout 
+        if (target == Resources.Load<Sprite>("B"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("Y");
+            mix3.sprite = Resources.Load<Sprite>("BB");
+            mix4.sprite = Resources.Load<Sprite>("B");
+        }
+        else if (target == Resources.Load<Sprite>("R") || target == Resources.Load<Sprite>("LR") ||
+                 target == Resources.Load<Sprite>("DR"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("R");
+            mix3.sprite = Resources.Load<Sprite>("R");
+            mix4.sprite = Resources.Load<Sprite>("R");
+        }else if (target == Resources.Load<Sprite>("Y") || target == Resources.Load<Sprite>("LY") ||
+                  target == Resources.Load<Sprite>("DY"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("Y");
+            mix2.sprite = Resources.Load<Sprite>("Y");
+            mix3.sprite = Resources.Load<Sprite>("Y");
+            mix4.sprite = Resources.Load<Sprite>("Y");
+        }else if (target == Resources.Load<Sprite>("BB") || target == Resources.Load<Sprite>("LBB") ||
+                  target == Resources.Load<Sprite>("DBB"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("BB");
+            mix2.sprite = Resources.Load<Sprite>("BB");
+            mix3.sprite = Resources.Load<Sprite>("BB");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+        else if (target == Resources.Load<Sprite>("BO") || target == Resources.Load<Sprite>("LBO") ||
+                 target == Resources.Load<Sprite>("DBO"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("R");
+            mix3.sprite = Resources.Load<Sprite>("R");
+            mix4.sprite = Resources.Load<Sprite>("Y");
+        }
+        else if (target == Resources.Load<Sprite>("O") || target == Resources.Load<Sprite>("LO") ||
+                 target == Resources.Load<Sprite>("DO"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("R");
+            mix3.sprite = Resources.Load<Sprite>("Y");
+            mix4.sprite = Resources.Load<Sprite>("Y");
+        }
+        else if (target == Resources.Load<Sprite>("SY") || target == Resources.Load<Sprite>("LSY") ||
+                 target == Resources.Load<Sprite>("DSY"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("Y");
+            mix3.sprite = Resources.Load<Sprite>("Y");
+            mix4.sprite = Resources.Load<Sprite>("Y");
+        }
+        else if (target == Resources.Load<Sprite>("SG") || target == Resources.Load<Sprite>("LSG") ||
+                 target == Resources.Load<Sprite>("DSG"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("Y");
+            mix2.sprite = Resources.Load<Sprite>("Y");
+            mix3.sprite = Resources.Load<Sprite>("Y");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+        else if (target == Resources.Load<Sprite>("G") || target == Resources.Load<Sprite>("LG") ||
+                 target == Resources.Load<Sprite>("DG"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("Y");
+            mix2.sprite = Resources.Load<Sprite>("Y");
+            mix3.sprite = Resources.Load<Sprite>("BB");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+        else if (target == Resources.Load<Sprite>("SB") || target == Resources.Load<Sprite>("LSB") ||
+                 target == Resources.Load<Sprite>("DSB"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("Y");
+            mix2.sprite = Resources.Load<Sprite>("BB");
+            mix3.sprite = Resources.Load<Sprite>("BB");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+        else if (target == Resources.Load<Sprite>("NB") || target == Resources.Load<Sprite>("LNB") ||
+                 target == Resources.Load<Sprite>("DNB"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("BB");
+            mix3.sprite = Resources.Load<Sprite>("BB");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+        else if (target == Resources.Load<Sprite>("P") || target == Resources.Load<Sprite>("LP") ||
+                 target == Resources.Load<Sprite>("DP"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("R");
+            mix3.sprite = Resources.Load<Sprite>("BB");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+        else if (target == Resources.Load<Sprite>("V") || target == Resources.Load<Sprite>("LV") ||
+                 target == Resources.Load<Sprite>("DV"))
+        {
+            mix1.sprite = Resources.Load<Sprite>("R");
+            mix2.sprite = Resources.Load<Sprite>("R");
+            mix3.sprite = Resources.Load<Sprite>("R");
+            mix4.sprite = Resources.Load<Sprite>("BB");
+        }
+         
     }
 
     public void LoseLife()
