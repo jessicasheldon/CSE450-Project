@@ -13,6 +13,7 @@ namespace Code{
         public GameObject tutorial4;
         public GameObject tutorial5;
         public GameObject tutorial6;
+        public GameObject tutorial7;
 
 
         void Awake() {
@@ -36,6 +37,7 @@ namespace Code{
             tutorial4.SetActive(false);
             tutorial5.SetActive(false);
             tutorial6.SetActive(false);
+            tutorial7.SetActive(false);
 
             someScreen.SetActive(true);
         }
@@ -62,6 +64,10 @@ namespace Code{
 
         public void ShowTutorialSix () {
             SwitchScreen(tutorial6);
+        }
+
+        public void ShowTutorialSeven () {
+            SwitchScreen(tutorial7);
         }
     }
 }

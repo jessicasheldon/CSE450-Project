@@ -52,9 +52,21 @@ namespace Code
                 colorHandlingScript.IncrementYellowCount(); 
                 
             }
+            if (collision.gameObject.name.Contains("White"))
+            {
+                Debug.Log("caught white");
+                colorHandlingScript.IncrementWhiteCount(); 
+                
+            }
+            if (collision.gameObject.name.Contains("Black"))
+            {
+                Debug.Log("caught black");
+                colorHandlingScript.IncrementBlackCount(); 
+                
+            }
             if (collision.gameObject.name.Contains("Water"))
             {
-                Debug.Log("caught yellow");
+                Debug.Log("caught water");
                 colorHandlingScript.ResetColorMixing(); 
                 
             }

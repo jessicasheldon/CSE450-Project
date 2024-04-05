@@ -10,6 +10,8 @@ namespace Code
         public GameObject red;
         public GameObject blue;
         public GameObject yellow;
+        public GameObject black;
+        public GameObject white;
         public GameObject water;
         public GameObject forceField;
         
@@ -59,7 +61,7 @@ namespace Code
 
             Vector3 newColorPosition = new(xColorPosition, yColorPosition, zColorPosition);
 
-            int color = Random.Range(1, 4);
+            int color = Random.Range(1, 6);
 
             if (color == 1)
             {
@@ -72,6 +74,14 @@ namespace Code
             if (color == 3)
             {
                 Instantiate(blue, newColorPosition, Quaternion.identity);
+            }
+            if (color == 4)
+            {
+                Instantiate(white, newColorPosition, Quaternion.identity);
+            }
+            if (color == 5)
+            {
+                Instantiate(black, newColorPosition, Quaternion.identity);
             }
             
 

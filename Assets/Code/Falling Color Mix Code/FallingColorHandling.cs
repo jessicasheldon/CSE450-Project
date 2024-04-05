@@ -26,7 +26,9 @@ public class FallingColorHandling : MonoBehaviour
     public GameObject xButton;
 
     private int[] lastColor = new int[4];
-    private int lastIndex = 0;
+    private int[] lastShade = new int[2];
+    private int lastColorIndex = 0;
+    private int lastShadeIndex = 0;
 
     private bool objectsSpawning = false;
     private Code.ObstaclePlacement obstaclePlacement;
@@ -128,6 +130,23 @@ public class FallingColorHandling : MonoBehaviour
         CheckWinCondition();
     }
 
+    public void IncrementWhiteCount()
+    {
+        UpdateScore(10);
+        UpdateLastShade(1);
+        UpdateResultColor();
+        CheckWinCondition();
+    }
+
+    public void IncrementBlackCount()
+    {
+        Debug.Log("increment black");
+        UpdateScore(10);
+        UpdateLastShade(2);
+        UpdateResultColor();
+        CheckWinCondition();
+    }
+
     private void UpdateLastColor(int color)
     {
         if (lastColor[0] == 0)
@@ -139,8 +158,23 @@ public class FallingColorHandling : MonoBehaviour
             return;
         }
 
-        lastColor[lastIndex] = color;
-        lastIndex = (lastIndex + 1) % 4;
+        lastColor[lastColorIndex] = color;
+        lastColorIndex = (lastColorIndex + 1) % 4;
+    }
+
+    private void UpdateLastShade(int shade)
+    {
+        if (lastShade[0] == 0)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                lastShade[i] = shade;
+            }
+            return;
+        }
+
+        lastShade[lastShadeIndex] = shade;
+        lastShadeIndex = (lastShadeIndex + 1) % 2;
     }
 
     private void UpdateScore(int points)
@@ -176,6 +210,10 @@ public class FallingColorHandling : MonoBehaviour
     {
         lastColor[i] = 0;
     }
+    for (int i = 0; i < 2; i++)
+    {
+        lastShade[i] = 0;
+    }
 }
 
     private void UpdateResultColor()
@@ -202,6 +240,10 @@ public class FallingColorHandling : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 lastColor[i] = 0;
+            }
+            for (int j = 0; j < 2; j++)
+            {
+                lastColor[j] = 0;
             }
             StartCoroutine(ShowStageNumber(2.0f));
             Debug.Log("Congratulations! You've matched the target color.");
@@ -256,6 +298,7 @@ public class FallingColorHandling : MonoBehaviour
 private Sprite GetResultColor()
 {
     int[] colorCounts = new int[4];
+    int[] shadeCounts = new int[2];
     int colorCount = 0;
 
     // Calculate the count of each color in the lastColor array
@@ -272,6 +315,37 @@ private Sprite GetResultColor()
     bool hasYellow = colorCounts[1] > 0;
     bool hasBlue = colorCounts[2] > 0;
 
+    bool hasWhite = false;
+    bool hasBlack = false;
+
+    for (int i = 0; i < 2; i++)
+    {
+        if (lastShade[i] == 1)
+        {
+            hasWhite = true;
+        }
+        else if(lastShade[i] == 2){
+            hasBlack = true;
+        }
+    }
+
+    Debug.Log("has white: " + hasWhite);
+    Debug.Log("has black: " + hasBlack);
+
+    int shadeVariant = 0;
+
+    if((hasWhite && hasBlack) || (!hasBlack && !hasWhite)){
+        shadeVariant = 0;
+    }
+    else if(hasWhite && !hasBlack){
+        shadeVariant = 1;
+    }
+    else{
+        shadeVariant = 2;
+    }
+
+    Debug.Log("shade variant: " + shadeVariant);
+
     // Check if at least two colors are present to determine the resulting color
         if (hasRed && hasYellow && hasBlue)
         {
@@ -279,51 +353,149 @@ private Sprite GetResultColor()
         }
         else if (hasRed && colorCounts[0] == 4)
         {
-            return Resources.Load<Sprite>("R");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("R");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LR");
+            }
+            else{
+                return Resources.Load<Sprite>("DR");
+            }
         }
         else if (hasYellow && colorCounts[1] == 4)
         {
-            return Resources.Load<Sprite>("Y");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("Y");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LY");
+            }
+            else{
+                return Resources.Load<Sprite>("DY");
+            }
         }
         else if (hasBlue && colorCounts[2] == 4)
         {
-            return Resources.Load<Sprite>("BB");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("BB");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LBB");
+            }
+            else{
+                return Resources.Load<Sprite>("DBB");
+            }
         }
         else if (hasRed && colorCounts[0] == 3 && colorCounts[1] == 1)
         {
-            return Resources.Load<Sprite>("BO");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("BO");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LBO");
+            }
+            else{
+                return Resources.Load<Sprite>("DBO");
+            }
         }
         else if (hasRed && colorCounts[0] == 2 && colorCounts[1] == 2)
         {
-            return Resources.Load<Sprite>("O");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("O");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LO");
+            }
+            else{
+                return Resources.Load<Sprite>("DO");
+            }
         }
         else if (hasRed && colorCounts[0] == 1 && colorCounts[1] == 3)
         {
-            return Resources.Load<Sprite>("SY");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("SY");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LSY");
+            }
+            else{
+                return Resources.Load<Sprite>("DSY");
+            }
+
         }
         else if (hasYellow && colorCounts[1] == 3 && colorCounts[2] == 1)
         {
-            return Resources.Load<Sprite>("SG");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("SG");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LSG");
+            }
+            else{
+                return Resources.Load<Sprite>("DSG");
+            }
         }
         else if (hasYellow && colorCounts[1] == 2 && colorCounts[2] == 2)
         {
-            return Resources.Load<Sprite>("G");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("G");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LG");
+            }
+            else{
+                return Resources.Load<Sprite>("DG");
+            }
         }
         else if (hasYellow && colorCounts[1] == 1 && colorCounts[2] == 3)
         {
-            return Resources.Load<Sprite>("SB");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("SB");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LSB");
+            }
+            else{
+                return Resources.Load<Sprite>("DSB");
+            }
+
         }
         else if (hasBlue && colorCounts[2] == 3 && colorCounts[0] == 1)
         {
-            return Resources.Load<Sprite>("NB");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("NB");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LNB");
+            }
+            else{
+                return Resources.Load<Sprite>("DNB");
+            }
         }
         else if (hasBlue && colorCounts[2] == 2 && colorCounts[0] == 2)
         {
-            return Resources.Load<Sprite>("P");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("P");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LP");
+            }
+            else{
+                return Resources.Load<Sprite>("DP");
+            }
         }
         else if (hasBlue && colorCounts[2] == 1 && colorCounts[0] == 3)
         {
-            return Resources.Load<Sprite>("V");
+            if(shadeVariant == 0){
+                return Resources.Load<Sprite>("V");
+            } 
+            else if(shadeVariant == 1){
+                return Resources.Load<Sprite>("LV");
+            }
+            else{
+                return Resources.Load<Sprite>("DV");
+            }
         }
     return Resources.Load<Sprite>("M");
 }
@@ -332,7 +504,9 @@ private Sprite GetResultColor()
     {
         string[] colorNames = new string[]
         {
-            "R", "BO", "O", "SY", "Y", "SG", "G", "SB", "BB", "NB", "P", "V", "B"
+            "R", "BO", "O", "SY", "Y", "SG", "G", "SB", "BB", "NB", "P", "V", "B",
+            "LR", "LBO", "LO", "LSY", "LY", "LSG", "LG", "LSB", "LBB", "LNB", "LP", "LV", "LB",
+            "DR", "DBO", "DO", "DSY", "DY", "DSG", "DG", "DSB", "DBB", "DNB", "DP", "DV", "DB"
         };
 
         int randomIndex = Random.Range(0, colorNames.Length);
