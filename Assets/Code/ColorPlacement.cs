@@ -14,7 +14,7 @@ namespace Code
         public GameObject white;
         public GameObject water;
         public GameObject forceField;
-        
+        public GameObject star;
 
         private int delay = 5;
      
@@ -31,7 +31,7 @@ namespace Code
         IEnumerator SpawnRandomObjects()
         {
             int loops = 0;
-             while (true)
+            while (true)
             {
                 if (fallingColorHandling.shouldObjectsSpawn())
                     {
@@ -83,7 +83,7 @@ namespace Code
             {
                 Instantiate(black, newColorPosition, Quaternion.identity);
             }
-            
+
 
         }
 
@@ -109,7 +109,7 @@ namespace Code
             float yPowerPosition = Random.Range(7, 12);
             float zPowerPosition = 0;
 
-            int powerUp = Random.Range(1, 3);
+            int powerUp = Random.Range(1, 4);
 
             Vector3 newPowerPosition = new(xPowerPosition, yPowerPosition, zPowerPosition);
 
@@ -121,7 +121,11 @@ namespace Code
             {
                 Instantiate(forceField, newPowerPosition, Quaternion.identity);
             }
-            
+            if (powerUp == 3)
+            {
+                Instantiate(star, newPowerPosition, Quaternion.identity);
+            }
+
 
         }
 

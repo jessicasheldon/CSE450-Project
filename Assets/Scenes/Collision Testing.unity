@@ -3923,10 +3923,11 @@ MonoBehaviour:
   red: {fileID: 7130247245133201183, guid: 9d75644d9fa6842bba1d7f3c3a426262, type: 3}
   blue: {fileID: 8108364744387429076, guid: 46a12b5950b9e40848ff7d95f8025a21, type: 3}
   yellow: {fileID: 5241741258953001498, guid: 7f2c14c78d3ab4f188b7ea0322a13323, type: 3}
-  black: {fileID: 5241741258953001498, guid: a4b51748b58374c51b51596dfa241241, type: 3}
-  white: {fileID: 5241741258953001498, guid: 3ef9542301d6b4e99bda7cf8361feebb, type: 3}
+  black: {fileID: 0}
+  white: {fileID: 0}
   water: {fileID: 5241741258953001498, guid: 248bb9b4ce4534f0e9ad1c791fe3d57f, type: 3}
   forceField: {fileID: 2552718365325201841, guid: 1295ed278764943028d7be53f65bd386, type: 3}
+  star: {fileID: 5241741258953001498, guid: 456751a18af444562bc2714e1f4298f7, type: 3}
 --- !u!61 &1120919432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6967,16 +6968,18 @@ MonoBehaviour:
   scoreboardUI: {fileID: 2128865285}
   targetColorRenderer: {fileID: 1999911986}
   resultRenderer: {fileID: 2027338772}
-  mix1: {fileID: 955869603}
-  mix2: {fileID: 1173039351}
-  mix3: {fileID: 1652888527}
+  mix1: {fileID: 0}
+  mix2: {fileID: 0}
+  mix3: {fileID: 0}
   congratulationsMessage: {fileID: 383697052}
   playAgainButton: {fileID: 1098417185}
   tutorialScreen: {fileID: 1491200886}
   xButton: {fileID: 2084161962}
+  spriteRenderer: {fileID: 686855310}
   scoreText: {fileID: 644982812}
   stageText: {fileID: 1637376454}
   livesText: {fileID: 1287148483}
+  invincibilityDuration: 5
 --- !u!1 &2027338767
 GameObject:
   m_ObjectHideFlags: 0

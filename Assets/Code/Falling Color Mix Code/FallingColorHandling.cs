@@ -32,6 +32,8 @@ public class FallingColorHandling : MonoBehaviour
 
     private bool objectsSpawning = false;
     private Code.ObstaclePlacement obstaclePlacement;
+    public SpriteRenderer spriteRenderer;
+    private Color originalColor = Color.white;
 
     private int score = 0;
     public Text scoreText;
@@ -40,6 +42,9 @@ public class FallingColorHandling : MonoBehaviour
 
     private int lives = 3;
     public Text livesText;
+
+    private bool isInvincible = false;
+    public float invincibilityDuration = 5f;
 
     public bool shouldObjectsSpawn()
     {
@@ -518,19 +523,81 @@ private Sprite GetResultColor()
         //working on this --Scout 
     }
 
+    private IEnumerator RainbowEffectCoroutine(float duration)
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < duration)
+        {
+            // Calculate the progress (0 to 1) over time
+            float progress = elapsedTime / duration;
+
+            // Interpolate between rainbow colors based on progress
+            spriteRenderer.color = RainbowLerp(progress);
+
+            // Increment elapsed time
+            elapsedTime += Time.deltaTime;
+
+            // Wait until next frame
+            yield return null;
+        }
+
+        // Revert to the original color
+        spriteRenderer.color = originalColor;
+    }
+    private Color RainbowLerp(float progress)
+    {
+        // Define colors of the rainbow
+        Color[] colors = new Color[]
+        {
+            Color.red,
+            Color.yellow,
+            Color.green,
+            Color.cyan,
+            Color.blue,
+            Color.magenta,
+            Color.red // Repeat red to loop back at the end
+        };
+
+        // Calculate which two colors to interpolate between
+        int index = (int)(progress * (colors.Length - 1));
+        float subProgress = (progress * (colors.Length - 1)) - index;
+
+        // Interpolate between the two colors
+        return Color.Lerp(colors[index], colors[index + 1], subProgress);
+    }
     public void LoseLife()
     {
-        lives--; // Decrease the number of lives
-        UpdateLivesText(); // Update the lives text
-
-        if (lives <= 0)
+        if (!isInvincible)
         {
-            ShowPlayAgainMenu(); // Show the Play Again menu if no lives left
+            lives--; // Decrease the number of lives
+            UpdateLivesText(); // Update the lives text
+
+            if (lives <= 0)
+            {
+                ShowPlayAgainMenu(); // Show the Play Again menu if no lives left
+            }
         }
     }
+    public void ActivateInvincibility(float duration)
+    {
+        StartCoroutine(InvincibilityCoroutine(duration));
+    }
 
+    private IEnumerator InvincibilityCoroutine(float duration)
+    {
+        isInvincible = true;
+        StartCoroutine(RainbowEffectCoroutine(duration));
+
+        yield return new WaitForSeconds(duration);
+
+        isInvincible = false;
+    }
     private void UpdateLivesText()
     {
         livesText.text = "Lives: " + lives;
+    }
+    public bool IsInvincible
+    {
+        get { return isInvincible; }
     }
 }

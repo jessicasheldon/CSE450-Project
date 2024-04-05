@@ -76,6 +76,10 @@ namespace Code
                 playerSprite.sprite = forceField;
                 force = true;
             }
+            if (collision.gameObject.name.Contains("Star"))
+            {
+                colorHandlingScript.ActivateInvincibility(colorHandlingScript.invincibilityDuration);
+            }
             Destroy(collision.gameObject);
 
         }
