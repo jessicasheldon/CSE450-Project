@@ -15,16 +15,19 @@ namespace Code
         public GameObject water;
         public GameObject forceField;
         public GameObject star;
+        public GameObject doubleSpeed;
+        private GameObject newObject;
 
         private int delay = 5;
      
 
         private FallingColorHandling fallingColorHandling;
+        private Collision collisionScript;
 
         private void Start()
         {
             fallingColorHandling = FindObjectOfType<FallingColorHandling>();
-            
+            collisionScript = GetComponent<Collision>();
             StartCoroutine(SpawnRandomObjects());
         }
 
@@ -65,25 +68,32 @@ namespace Code
 
             if (color == 1)
             {
-                Instantiate(red, newColorPosition, Quaternion.identity);
+                newObject = Instantiate(red, newColorPosition, Quaternion.identity);
             }
             if (color == 2)
             {
-                Instantiate(yellow, newColorPosition, Quaternion.identity);
+                newObject = Instantiate(yellow, newColorPosition, Quaternion.identity);
             }
             if (color == 3)
             {
-                Instantiate(blue, newColorPosition, Quaternion.identity);
+               newObject = Instantiate(blue, newColorPosition, Quaternion.identity);
             }
             if (color == 4)
             {
-                Instantiate(white, newColorPosition, Quaternion.identity);
+                newObject = Instantiate(white, newColorPosition, Quaternion.identity);
             }
             if (color == 5)
             {
-                Instantiate(black, newColorPosition, Quaternion.identity);
+                newObject = Instantiate(black, newColorPosition, Quaternion.identity);
             }
 
+            if (collisionScript != null && collisionScript.speed)
+            {
+                Debug.Log("Gravity adjusted color");
+                Rigidbody2D gravity = newObject.GetComponent<Rigidbody2D>();
+                gravity.gravityScale *= 2;
+            }
+            
 
         }
 
@@ -109,24 +119,33 @@ namespace Code
             float yPowerPosition = Random.Range(7, 12);
             float zPowerPosition = 0;
 
-            int powerUp = Random.Range(1, 4);
+            int powerUp = Random.Range(1, 5);
 
             Vector3 newPowerPosition = new(xPowerPosition, yPowerPosition, zPowerPosition);
 
             if (powerUp == 1)
             {
-                Instantiate(water, newPowerPosition, Quaternion.identity);
+                newObject = Instantiate(water, newPowerPosition, Quaternion.identity);
             }
             if (powerUp == 2)
             {
-                Instantiate(forceField, newPowerPosition, Quaternion.identity);
+                newObject = Instantiate(forceField, newPowerPosition, Quaternion.identity);
             }
             if (powerUp == 3)
             {
-                Instantiate(star, newPowerPosition, Quaternion.identity);
+                newObject = Instantiate(star, newPowerPosition, Quaternion.identity);
+            }
+            if (powerUp == 4)
+            {
+                newObject = Instantiate(doubleSpeed, newPowerPosition, Quaternion.identity);
             }
 
-
+            if (collisionScript != null && collisionScript.speed)
+            {
+                Debug.Log("Gravity adjusted powerup");
+                Rigidbody2D gravity = newObject.GetComponent<Rigidbody2D>();
+                gravity.gravityScale *= 2;
+            }
         }
 
 
