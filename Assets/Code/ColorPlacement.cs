@@ -27,7 +27,7 @@ namespace Code
         private void Start()
         {
             fallingColorHandling = FindObjectOfType<FallingColorHandling>();
-            collisionScript = GetComponent<Collision>();
+            collisionScript = FindObjectOfType<Collision>();
             StartCoroutine(SpawnRandomObjects());
         }
 

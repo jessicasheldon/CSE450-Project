@@ -36,8 +36,9 @@ namespace Code
                 speedCount += 1;
 
 
-                if (speedCount == 10000)
+                if (speedCount == 15000)
                 {
+                    Debug.Log("Speed = false");
                     speedCount = 0;
                     speed = false;
                     
@@ -98,7 +99,20 @@ namespace Code
             if (collision.gameObject.name.Contains("Double Speed"))
             {
                 speed = true;
-                
+                Debug.Log("Speed = true");
+                GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+                foreach (GameObject obstacle in obstacles)
+                {
+                    Rigidbody2D gravity = obstacle.GetComponent<Rigidbody2D>();
+                    gravity.gravityScale *= 2;
+                }
+                GameObject[] colors = GameObject.FindGameObjectsWithTag("Color");
+                foreach (GameObject color in colors)
+                {
+                    Rigidbody2D gravity = color.GetComponent<Rigidbody2D>();
+                    gravity.gravityScale *= 2;
+                }
+
             }
             Destroy(collision.gameObject);
 
