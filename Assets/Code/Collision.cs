@@ -45,6 +45,10 @@ namespace Code
                 }
 
             }
+
+            if(Input.GetKeyDown(KeyCode.Escape)){
+                TutorialController.instance.Show();
+            }
         }
         private void OnCollisionEnter2D(Collision2D collision)
         {

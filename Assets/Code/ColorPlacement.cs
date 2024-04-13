@@ -31,6 +31,8 @@ namespace Code
             StartCoroutine(SpawnRandomObjects());
         }
 
+        
+
         IEnumerator SpawnRandomObjects()
         {
             int loops = 0;

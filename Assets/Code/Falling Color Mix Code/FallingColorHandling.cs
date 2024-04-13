@@ -301,6 +301,15 @@ public class FallingColorHandling : MonoBehaviour
     }
 
 
+    public void Pause(){
+        objectsSpawning = false;
+    }
+
+    public void StartAgain(){
+        objectsSpawning = true;
+    }
+
+
 private Sprite GetResultColor()
 {
     int[] colorCounts = new int[4];

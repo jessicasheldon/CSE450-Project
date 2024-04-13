@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Code{
     public class TutorialController : MonoBehaviour
     {
+        //public FallingColorHandling FallingColorHandlingScript ;
+
         public static TutorialController instance;
 
         public GameObject tutorial1;
@@ -24,10 +27,12 @@ namespace Code{
         public void Show(){
             ShowTutorialOne();
             gameObject.SetActive(true);
+            //FallingColorHandlingScript.Pause();
         }
 
         public void Hide(){
             gameObject.SetActive(false);
+            //FallingColorHandlingScript.StartAgain();
         }
 
         void SwitchScreen(GameObject someScreen){

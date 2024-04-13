@@ -206,7 +206,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialSeven
         m_Mode: 1
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 36527812}
   - component: {fileID: 36527815}
   - component: {fileID: 36527814}
-  - component: {fileID: 36527813}
+  - component: {fileID: 36527816}
   m_Layer: 5
   m_Name: Tutorial Panel
   m_TagString: Untagged
@@ -301,25 +301,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &36527813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36527811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9071bb1ea757646e8b89c71513e3e324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorial1: {fileID: 48028096}
-  tutorial2: {fileID: 1136092469}
-  tutorial3: {fileID: 1703868187}
-  tutorial4: {fileID: 1965989218}
-  tutorial5: {fileID: 364319450}
-  tutorial6: {fileID: 1481630267}
-  tutorial7: {fileID: 2068170066}
 --- !u!114 &36527814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +339,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36527811}
   m_CullTransparentMesh: 1
+--- !u!114 &36527816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36527811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9071bb1ea757646e8b89c71513e3e324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorial1: {fileID: 48028096}
+  tutorial2: {fileID: 1136092469}
+  tutorial3: {fileID: 1703868187}
+  tutorial4: {fileID: 1965989218}
+  tutorial5: {fileID: 364319450}
+  tutorial6: {fileID: 1481630267}
+  tutorial7: {fileID: 2068170066}
 --- !u!1 &48028096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialOne
         m_Mode: 1
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialSix
         m_Mode: 1
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialFour
         m_Mode: 1
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialFive
         m_Mode: 1
@@ -2487,7 +2487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.63529414, g: 0.46274513, b: 0.37647063, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2497,7 +2497,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 18
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
@@ -3199,7 +3199,6 @@ RectTransform:
   m_Children:
   - {fileID: 1005785035}
   - {fileID: 1608264051}
-  - {fileID: 2046717874}
   - {fileID: 1536967064}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3425,7 +3424,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialThree
         m_Mode: 1
@@ -3734,10 +3733,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 851107385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 860, y: 489}
+  m_SizeDelta: {x: 0, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005785036
 MonoBehaviour:
@@ -4375,7 +4374,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialThree
         m_Mode: 1
@@ -5119,7 +5118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: Hide
         m_Mode: 1
@@ -5331,7 +5330,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialFour
         m_Mode: 1
@@ -5535,11 +5534,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 851107385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 360.25778, y: 108.95245}
-  m_SizeDelta: {x: 135.9912, y: 264.0895}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: -150}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1536967065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5661,7 +5660,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialFive
         m_Mode: 1
@@ -5863,11 +5862,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 851107385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000040531, y: -216.7588}
-  m_SizeDelta: {x: 860, y: 55.4824}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 65}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1608264052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6190,7 +6189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialTwo
         m_Mode: 1
@@ -6483,7 +6482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -69.64499, y: -225.83}
+  m_AnchoredPosition: {x: -69.64496, y: -225.83}
   m_SizeDelta: {x: 80.18, y: 23.7}
   m_Pivot: {x: 0.37858778, y: 0.5}
 --- !u!114 &1858039177
@@ -6666,7 +6665,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialTwo
         m_Mode: 1
@@ -7349,81 +7348,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2046717873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2046717874}
-  - component: {fileID: 2046717876}
-  - component: {fileID: 2046717875}
-  m_Layer: 5
-  m_Name: Image (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2046717874
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046717873}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 851107385}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317, y: 198}
-  m_SizeDelta: {x: 189.2068, y: 65.5544}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2046717875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046717873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.63529414, g: 0.46274513, b: 0.37647063, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2046717876
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046717873}
-  m_CullTransparentMesh: 1
 --- !u!1 &2059048303
 GameObject:
   m_ObjectHideFlags: 0
@@ -8134,7 +8058,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36527813}
+      - m_Target: {fileID: 36527816}
         m_TargetAssemblyTypeName: Code.TutorialController, Assembly-CSharp
         m_MethodName: ShowTutorialSix
         m_Mode: 1
@@ -8226,7 +8150,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 50.1696}
+  m_AnchoredPosition: {x: 0, y: 50.169617}
   m_SizeDelta: {x: -485.5124, y: -174.7844}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128865285
