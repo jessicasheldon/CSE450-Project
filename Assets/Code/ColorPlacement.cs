@@ -46,7 +46,7 @@ namespace Code
                             RandomPowerUpPosition();
                         }
                         else{
-                            yield return new WaitForSeconds(3f);
+                            yield return new WaitForSeconds(2f);
                             RandomColorPosition();
                         }
                     loops += 1;

@@ -235,6 +235,7 @@ public class FallingColorHandling : MonoBehaviour
         {
             UpdateScore(100);
             UpdateStage();
+            SoundManager.instance.PlayWinSound();
             obstaclePlacement.UpdateSpawnRate(stage);
             // Set a new target color
             targetColorSprite = GetRandomTargetColorSprite();
