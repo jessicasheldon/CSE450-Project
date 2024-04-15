@@ -251,7 +251,7 @@ public class FallingColorHandling : MonoBehaviour
             }
             for (int j = 0; j < 2; j++)
             {
-                lastColor[j] = 0;
+                lastShade[j] = 0;
             }
             StartCoroutine(ShowStageNumber(2.0f));
             Debug.Log("Congratulations! You've matched the target color.");
