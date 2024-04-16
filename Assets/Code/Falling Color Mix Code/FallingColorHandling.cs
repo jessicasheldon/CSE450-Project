@@ -39,7 +39,7 @@ public class FallingColorHandling : MonoBehaviour
 
     private int score = 0;
     public Text scoreText;
-    private int stage = 1;
+    private int stage = 4;
     public Text stageText;
 
     private int lives = 3;
@@ -205,7 +205,6 @@ public class FallingColorHandling : MonoBehaviour
     {
         stage += 1;
         stageText.text = "Stage " + stage;
-        if (stage == 5) { ShowJumpText(2.0f); }
     }
 
     private void ResetStage()
@@ -241,6 +240,7 @@ public class FallingColorHandling : MonoBehaviour
         {
             UpdateScore(100);
             UpdateStage();
+            if (stage == 5) { StartCoroutine(ShowJumpText(2.0f)); }
             SoundManager.instance.PlayWinSound();
             obstaclePlacement.UpdateSpawnRate(stage);
             // Set a new target color
