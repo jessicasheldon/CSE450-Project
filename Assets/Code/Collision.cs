@@ -118,7 +118,10 @@ namespace Code
                 }
 
             }
-            Destroy(collision.gameObject);
+            if (!collision.gameObject.name.Contains("Ground"))
+            {
+                Destroy(collision.gameObject);
+            }
 
         }
     }

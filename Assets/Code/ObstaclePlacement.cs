@@ -9,6 +9,9 @@ namespace Code
         public GameObject TNTPrefab;
         public GameObject spikeBallPrefab;
         public GameObject weightPrefab;
+        public GameObject sidewaysObstaclePrefab;
+
+        private bool spawnSidewaysObstacle = false;
 
         private FallingColorHandling fallingColorHandling;
 
@@ -26,6 +29,12 @@ namespace Code
             if (currentStage % 2 == 0)
             {
                 spawnTime = Mathf.Max(spawnTime * 0.8f, 0.5f); // Reduce the spawnRate by 80% with minimum 0.5 second.
+            }
+
+            if (currentStage >= 5)
+            {
+                spawnSidewaysObstacle = true;
+                // SpawnSidewaysObstacle();
             }
         }
 
@@ -53,7 +62,7 @@ namespace Code
 
             Vector3 newObstaclePosition = new Vector3(xObstaclePosition, yObstaclePosition, zObstaclePosition);
 
-            int obstacle = Random.Range(1, 4);
+            int obstacle = Random.Range(1, 5);
             if (obstacle == 1)
             {
                 Instantiate(TNTPrefab, newObstaclePosition, Quaternion.identity);
@@ -66,6 +75,10 @@ namespace Code
             {
                 Instantiate(weightPrefab, newObstaclePosition, Quaternion.identity);
             }
+            else if (obstacle == 4 && spawnSidewaysObstacle)
+            {
+                SpawnSidewaysObstacle();
+            }
         }
 
         public void ClearObstacles()
@@ -75,6 +88,13 @@ namespace Code
             {
                 Destroy(obstacle);
             }
+        }
+
+        private void SpawnSidewaysObstacle()
+        {
+            // Define the start position for the sideways obstacle, potentially off-screen
+            Vector3 startPosition = new Vector3(-10, -4, 0);  // Adjust this position as needed
+            GameObject obstacle = Instantiate(sidewaysObstaclePrefab, startPosition, Quaternion.identity);
         }
     }
 }

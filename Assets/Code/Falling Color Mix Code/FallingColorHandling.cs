@@ -44,6 +44,9 @@ public class FallingColorHandling : MonoBehaviour
 
     private int lives = 3;
     public Text livesText;
+    public Text addLifeText;
+
+    public Text jumpText;
 
     private bool isInvincible = false;
     public float invincibilityDuration = 5f;
@@ -60,6 +63,8 @@ public class FallingColorHandling : MonoBehaviour
         playAgainButton.SetActive(false);
         UpdateLivesText();
         ShowTutorialScreen();
+        addLifeText.gameObject.SetActive(false);
+        jumpText.gameObject.SetActive(false);
     }
     
 
@@ -200,6 +205,7 @@ public class FallingColorHandling : MonoBehaviour
     {
         stage += 1;
         stageText.text = "Stage " + stage;
+        if (stage == 5) { ShowJumpText(2.0f); }
     }
 
     private void ResetStage()
@@ -253,6 +259,12 @@ public class FallingColorHandling : MonoBehaviour
             {
                 lastShade[j] = 0;
             }
+            if(lives < 3)
+            {
+                StartCoroutine(ShowAddLives(2.0f));
+                lives++;
+                UpdateLivesText();
+            }
             StartCoroutine(ShowStageNumber(2.0f));
             Debug.Log("Congratulations! You've matched the target color.");
         }
@@ -263,6 +275,18 @@ public class FallingColorHandling : MonoBehaviour
         stageText.gameObject.SetActive(true); // Show the stage number
         yield return new WaitForSeconds(duration); // Wait for the specified duration
         stageText.gameObject.SetActive(false); // Hide the stage number
+    }
+    IEnumerator ShowJumpText(float duration)
+    {
+        jumpText.gameObject.SetActive(true); // Show the stage number
+        yield return new WaitForSeconds(duration); // Wait for the specified duration
+        jumpText.gameObject.SetActive(false); // Hide the stage number
+    }
+    IEnumerator ShowAddLives(float duration)
+    {
+        addLifeText.gameObject.SetActive(true); // Show the stage number
+        yield return new WaitForSeconds(duration); // Wait for the specified duration
+        addLifeText.gameObject.SetActive(false); // Hide the stage number
     }
 
     public void ClearObstacles()
@@ -869,4 +893,5 @@ private Sprite GetResultColor()
     {
         get { return isInvincible; }
     }
+
 }

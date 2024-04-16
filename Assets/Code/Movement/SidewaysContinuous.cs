@@ -5,8 +5,17 @@ using UnityEngine;
 public class SidewaysContinuous : MonoBehaviour
 {
     public float speed = 5.0f;
+    public float jumpForce = 7.0f;
     public float minX = -9.0f; // Left boundary
     public float maxX = 9.0f;  // Right boundary
+    private bool isGrounded;
+    private Rigidbody2D _rb;
+    public KeyCode jump = KeyCode.Space;
+
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
@@ -21,5 +30,28 @@ public class SidewaysContinuous : MonoBehaviour
 
         // Apply the clamped position to the transform
         transform.position = new Vector3(newXPosition, transform.position.y, transform.position.z);
+
+        if (Input.GetKeyDown(jump) && isGrounded) 
+        {
+            _rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
+    }
+
+
+    // Detect collision with the ground
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))  // Ensure the ground has the tag "Ground"
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
     }
 }
