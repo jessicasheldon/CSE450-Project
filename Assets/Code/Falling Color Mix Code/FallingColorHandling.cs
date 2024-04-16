@@ -550,7 +550,7 @@ private Sprite GetResultColor()
             "DR", "DBO", "DO", "DSY", "DY", "DSG", "DG", "DSB", "DBB", "DNB", "DP", "DV", "DB"
         };
 
-        int randomIndex = Random.Range(0, colorNames.Length);
+        int randomIndex = Random.Range(0, colorNames.Length-1);
         return Resources.Load<Sprite>(colorNames[randomIndex]);
     }
 
