@@ -27,11 +27,13 @@ namespace Code{
         public void Show(){
             ShowTutorialOne();
             gameObject.SetActive(true);
+            Time.timeScale = 0;
             //FallingColorHandlingScript.Pause();
         }
 
         public void Hide(){
             gameObject.SetActive(false);
+            Time.timeScale = 1;
             //FallingColorHandlingScript.StartAgain();
         }
 
@@ -45,6 +47,7 @@ namespace Code{
             tutorial7.SetActive(false);
 
             someScreen.SetActive(true);
+            
         }
 
         public void ShowTutorialOne () {
