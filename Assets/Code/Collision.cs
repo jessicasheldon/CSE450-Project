@@ -21,8 +21,7 @@ namespace Code
             {
                 count += 1;
 
-
-                if (count == 10000)
+                if (count == 5000)
                 {
                     count = 0;
                     force = false;

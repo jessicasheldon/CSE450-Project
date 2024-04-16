@@ -39,7 +39,7 @@ public class FallingColorHandling : MonoBehaviour
 
     private int score = 0;
     public Text scoreText;
-    private int stage = 4;
+    private int stage = 1;
     public Text stageText;
 
     private int lives = 3;
