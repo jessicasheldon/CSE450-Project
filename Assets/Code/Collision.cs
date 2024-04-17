@@ -12,18 +12,18 @@ namespace Code
         public bool force = false;
         public bool speed = false;
         public FallingColorHandling colorHandlingScript;
-        private int count = 0;
+        private int forceCount = 0;
         private int speedCount = 0;
 
         void Update()
         {
             if (force)
             {
-                count += 1;
+                forceCount += 1;
 
-                if (count == 5000)
+                if (forceCount >= 10000)
                 {
-                    count = 0;
+                    forceCount = 0;
                     force = false;
                     SpriteRenderer playerSprite = gameObject.GetComponent<SpriteRenderer>();
                     playerSprite.sprite = circle;
@@ -35,7 +35,7 @@ namespace Code
                 speedCount += 1;
 
 
-                if (speedCount == 15000)
+                if (speedCount >= 15000)
                 {
                     Debug.Log("Speed = false");
                     speedCount = 0;
@@ -89,7 +89,7 @@ namespace Code
                 colorHandlingScript.ResetColorMixing(); 
                 
             }
-            if (collision.gameObject.name.Contains("Force Field"))
+            if (collision.gameObject.name.Contains("Force Field") && !colorHandlingScript.isInvincible)
             {
                 SpriteRenderer playerSprite = gameObject.GetComponent<SpriteRenderer>();
                 playerSprite.sprite = forceField;
@@ -97,6 +97,10 @@ namespace Code
             }
             if (collision.gameObject.name.Contains("Star"))
             {
+                if(force == true)
+                {
+                    forceCount = 10000;
+                }
                 colorHandlingScript.ActivateInvincibility(colorHandlingScript.invincibilityDuration);
             }
             if (collision.gameObject.name.Contains("Double Speed"))

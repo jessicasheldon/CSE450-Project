@@ -48,7 +48,7 @@ public class FallingColorHandling : MonoBehaviour
 
     public Text jumpText;
 
-    private bool isInvincible = false;
+    public bool isInvincible = false;
     public float invincibilityDuration = 5f;
 
     public bool shouldObjectsSpawn()
